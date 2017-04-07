@@ -3,40 +3,48 @@ from __future__ import unicode_literals
 
 from django.db import models
 
-# Create your models here.
+# Use django's built in User class.
+from django.contrib.auth.models import User
 
-#user class that handles all users
-class User(models.Model): 
-	usr_name = models.CharField(max_length=255)
-	first_name = models.CharField(max_length=255)
-	last_name = models.CharField(max_length=255)
-	interests = models.CharField(max_length=255)
 
-	def __str__(self):
-		return self.usr_name
-
-#post class that handles user publications
 class Posts(models.Model):
-	usr_post = models.URLField(max_length=255)
-	usr_post_msg = models.CharField(max_length=255)
-	post_date = models.DateTimeField(auto_now=True)
+	"""post class that handles user messages about bookmarks. 
+	"""
+	creator = models.ForeignKey(User)
+	msg = models.TextField(max_length=255)
+	date = models.DateTimeField(auto_now=True)
 	
 	def __str__(self):
-		return self.usr_post
+		return self.msg
 
-#bookmark class that contains all bookmarks
+
 class Bookmarks(models.Model):
-	bkmark_title = models.CharField(max_length=255)
-	bkmark_address = models.URLField(max_length=255)
-	bkmark_date = models.DateTimeField(max_length=255)
+	"""bookmark class that contains all bookmarks
+	"""
+	title = models.CharField(max_length=255)
+	web_url = models.URLField()
+	date = models.DateTimeField(auto_now=True)
 
 	def __str__(self):
-		return self.bkmark_title 
+		return self.title 
 
-#class for tagging bookmarks with description
+
 class Tag(models.Model):
-	tag_keywrd = models.CharField(max_length=255)
-	tag_description = models.CharField(max_length=255)
+	"""class for tagging bookmarks with description
+	"""
+	text = models.CharField(max_length=255, unique=True)
+	description = models.CharField(max_length=255)
 	
 	def __str__(self):
-		return self.tag_keywrd 		
+		return self.text
+
+
+class TaggedBookmark(models.Model):
+	bookmark = models.ForeignKey(Bookmarks, related_name="tags")
+	tag = models.ForeignKey(Tag, related_name="tagged_bkmarks")
+
+
+
+class BookmarkComments(models.Model):	
+	bookmark = models.ForeignKey(Bookmarks)
+	post = models.ForeignKey(Posts)
