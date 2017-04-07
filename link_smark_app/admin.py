@@ -10,3 +10,4 @@ admin.site.register(Bookmarks)
 admin.site.register(Tag)
 admin.site.register(TaggedBookmark)
 admin.site.register(BookmarkComments)
+
