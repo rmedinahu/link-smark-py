@@ -8,12 +8,12 @@ from django.contrib.auth.models import User
 
 
 class Posts(models.Model):
-	"""post class that handles user messages about bookmarks. 
+	"""post class that handles user messages about bookmarks.
 	"""
 	creator = models.ForeignKey(User)
 	msg = models.TextField(max_length=255)
 	date = models.DateTimeField(auto_now=True)
-	
+
 	def __str__(self):
 		return self.msg
 
@@ -26,7 +26,7 @@ class Bookmarks(models.Model):
 	date = models.DateTimeField(auto_now=True)
 
 	def __str__(self):
-		return self.title 
+		return self.title
 
 
 class Tag(models.Model):
@@ -34,7 +34,7 @@ class Tag(models.Model):
 	"""
 	text = models.CharField(max_length=255, unique=True)
 	description = models.CharField(max_length=255)
-	
+
 	def __str__(self):
 		return self.text
 
@@ -45,6 +45,6 @@ class TaggedBookmark(models.Model):
 
 
 
-class BookmarkComments(models.Model):	
+class BookmarkComments(models.Model):
 	bookmark = models.ForeignKey(Bookmarks)
 	post = models.ForeignKey(Posts)

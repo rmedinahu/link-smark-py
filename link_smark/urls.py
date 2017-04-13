@@ -16,9 +16,10 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
-from link_smark_app.views import HomeView
+from link_smark_app.views import HomeView, UpdateB
 
 urlpatterns = [
     url(r'^$', HomeView.as_view(), name='home'),
     url(r'^admin/', admin.site.urls),
+    url(r'^update/(?P<pk>\d+)/$', UpdateB.as_view(), name='update'),
 ]
