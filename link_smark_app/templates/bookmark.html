@@ -1,0 +1,20 @@
+<!-- bookmark.html -->
+{% extends "base.html" %}
+
+{% block header_row %} 
+<div class="col-md-12">
+    <h2>Linky Smarty Linky</h2>
+    </br>
+</div>
+{% endblock header_row %}
+
+{% block content_row %} 
+    <div class="col-md-12"><h3>Add a new Bookmark</h3></div>
+
+<div class="col-md-12">
+    <form action="" method="post">{% csrf_token %}
+        {{ form.as_table }}
+        <input type="submit" class="btn btn-success" value="Create Bookmark" />
+    </form>
+</div>
+{% endblock content_row %} 
