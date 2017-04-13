@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
-
+from django.urls import reverse
 # Use django's built in User class.
 from django.contrib.auth.models import User
 
@@ -24,6 +24,9 @@ class Bookmarks(models.Model):
 	title = models.CharField(max_length=255)
 	web_url = models.URLField()
 	date = models.DateTimeField(auto_now=True)
+
+	def get_absolute_url(self):
+		return reverse('bookmark_view', kwargs={'pk': self.pk})
 
 	def __str__(self):
 		return self.title 
