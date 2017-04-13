@@ -23,6 +23,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
 
     url(r'^bookmark/', AddBookmark.as_view(), name='bookmark'),
-
+    url(r'^bookmark/details/', BookmarkDetail.as_view(), name='bookmark_list'),
     url(r'^bookmark/(?P<pk>\d+)/$', AddBookmark.as_view(), name='bookmark_view'),
 ]

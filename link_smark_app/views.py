@@ -16,3 +16,6 @@ class AddBookmark(CreateView):
 	model = Bookmarks
 	template_name = 'bookmark.html'
 	fields = ['title', 'web_url']
+class BookmarkDetail(DetailView):
+    model = Bookmarks
+    template_name = 'bookmark_detail.html'
