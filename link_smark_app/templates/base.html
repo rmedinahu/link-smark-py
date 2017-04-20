@@ -17,7 +17,7 @@
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand lead" href="{% url 'home' %}">Application Name</a>
+            <a class="navbar-brand lead" href="{% url 'home' %}">Bookmark Page</a>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
@@ -25,7 +25,7 @@
                 <a class="nav-link" href="{% url 'bookmark' %}">Add Bookmark<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="#">menu item <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{% url 'list' %}">Bookmark List<span class="sr-only">(current)</span></a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
@@ -48,4 +48,4 @@
         <script src="https://use.fontawesome.com/31ce935913.js"></script>
     </body>
 </html>
-
+<!--ItemList to look at-->

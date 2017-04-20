@@ -3,19 +3,21 @@
 {% extends "base.html" %}
 
 {% block header_row %} 
-    <div class="col-md-12"><h3>Lists</h3></div>
+    <div class="col-md-12">
+    	<h3>
+    	{{ object.title }} 
+    	<a href="{% url 'update' object.pk %}" class="btn btn-sm btn-outline-primary"><i class="fa fa-edit"></i></a>
+    	</h3>
+    </div>
 {% endblock header_row %}
 
 {% block content_row %} 
 <div class="col-md-4">
-    <p>
-        <strong>Home</strong>
-        <a href="{% url 'home' %}" class="btn btn-sm btn-outline-primary"><i class="fa fa-plus"></i></a>
-        <ul class="list-unstyled">
-        <li>title: {{ object.title }}</li>
-        <li>url: {{ object.web_url }}</li>
-        <li>date: {{ object.date }}</li>
-        </ul>
-    </p>
+	<ul class="list-unstyled">
+	<li>title: {{ object.title }}</li>
+	<li>web_url: {{ object.web_url }}</li>
+	<li>date: {{ object.date }}</li>
+	</ul>
 </div>
-{% endblock content_row %}
+{% endblock content_row %} 
+

@@ -16,14 +16,15 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
-from link_smark_app.views import HomeView, UpdateB, BookmarkDetail, AddBookmark
+from link_smark_app.views import HomeView, UpdateB, BookmarkDetail, AddBookmark, BookmarkList
 
 urlpatterns = [
     url(r'^$', HomeView.as_view(), name='home'),
     url(r'^admin/', admin.site.urls),
+url(r'^bookmark/list/', BookmarkList.as_view(), name='list'),
     url(r'^update/(?P<pk>\d+)/$', UpdateB.as_view(), name='update'),
+    url(r'^bookmark/add/', AddBookmark.as_view(), name='bookmark'),
+    url(r'^bookmark/detail/(?P<pk>\d+)/$', BookmarkDetail.as_view(), name='bookmark_detail'),
+    
 
-    url(r'^bookmark/', AddBookmark.as_view(), name='bookmark'),
-    url(r'^bookmark/details/', BookmarkDetail.as_view(), name='bookmark_list'),
-    url(r'^bookmark/(?P<pk>\d+)/$', AddBookmark.as_view(), name='bookmark_view'),
 ]
