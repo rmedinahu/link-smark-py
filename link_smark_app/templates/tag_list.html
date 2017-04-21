@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block header_row %}
+    <div class="col-md-12"></div>
+{% endblock header_row %}
+
+{% block content_row %}
+<div class="col-md-12">
+	<p>
+	    <strong>Tags</strong>
+
+	    <ul class="list-unstyled">
+	    {% for object in object_list %}
+	        <li>
+	        {{ object.text }}
+          {{object.description}}
+	    {% endfor %}
+	    </ul>
+	</p>
+</div>
+{% endblock content_row %}

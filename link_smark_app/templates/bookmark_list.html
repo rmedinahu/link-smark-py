@@ -1,23 +1,20 @@
-<!-- item_list.html -->
-
 {% extends "base.html" %}
 
-{% block header_row %} 
+{% block header_row %}
     <div class="col-md-12"></div>
 {% endblock header_row %}
 
-{% block content_row %} 
+{% block content_row %}
 <div class="col-md-12">
 	<p>
-		<strong>Items</strong>
-		<a href="{% url 'item_add' %}" class="btn btn-sm btn-outline-primary"><i class="fa fa-plus"></i></a>
-  
+	    <strong>Bookmark</strong>
+
 	    <ul class="list-unstyled">
-	    {% for item in object_list %}
+	    {% for object in object_list %}
 	        <li>
-	        {{ item.name }}
-	        <a href="{% url 'bookmark_view' item.pk %}" class="btn btn-link"><i class="fa fa-eye"></i></a>
-	        <!-- <a href="{% url 'item_edit' item.pk %}" class="btn btn-link"><i class="fa fa-edit"></i></a> -->
+	        {{ object.title }}
+	        <a href="{% url 'bookmark_detail' object.pk %}" class="btn btn-link"><i class="fa fa-eye"></i></a>
+	        <a href="{% url 'update' object.pk %}" class="btn btn-link"><i class="fa fa-edit"></i></a>
 	        </li>
 	    {% endfor %}
 	    </ul>

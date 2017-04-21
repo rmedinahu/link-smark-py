@@ -31,22 +31,23 @@ class Bookmarks(models.Model):
 	def __str__(self):
 		return self.title
 
-
 class Tag(models.Model):
-	"""class for tagging bookmarks with description
-	"""
+	"""class for tagging bookmarks with description"""
 	text = models.CharField(max_length=255, unique=True)
 	description = models.CharField(max_length=255)
 
-	def __str__(self):
-		return self.text
+        def __str__(self):
+            return self.text
 
+	def get_absolute_url(self):
+		return reverse('list_tag', kwargs=False)
 
 class TaggedBookmark(models.Model):
 	bookmark = models.ForeignKey(Bookmarks, related_name="tags")
 	tag = models.ForeignKey(Tag, related_name="tagged_bkmarks")
 
-
+	def __str__(self):
+	    return self.tagged_bookmark.name
 
 class BookmarkComments(models.Model):
 	bookmark = models.ForeignKey(Bookmarks)
