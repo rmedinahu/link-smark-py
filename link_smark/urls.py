@@ -24,11 +24,12 @@ urlpatterns = [
     url(r'^bookmark/add/', AddBookmark.as_view(), name='bookmark'),
     url(r'^bookmark/(?P<pk>\d+)/$', AddBookmark.as_view(), name='bookmark_view'),
     url(r'^bookmark/detail/(?P<pk>\d+)/$', BookmarkDetail.as_view(), name='bookmark_detail'),
+    url(r'^bookmark/details/', BookmarkDetail.as_view(), name='bookmark_list'),  
     url(r'^bookmark/list/', BookmarkList.as_view(), name='list'),
     url(r'^update/(?P<pk>\d+)/$', UpdateB.as_view(), name='update'),
     url(r'^update/', UpdateB.as_view(), name='update'),
     url(r'^bookmark/tag/', AddTag.as_view(), name='tag'),
     url(r'^tag/list/', ViewTag.as_view(), name='list_tag'),
-    #url(r'^/bookmark/tagged/$', TaggedBookmark.as_view(), name='_bookmark_view'),
+    #url(r'^/bookmark/tagged/$', TaggedBookmark.as_view(), name='_bookmark_view')
 
 ]
