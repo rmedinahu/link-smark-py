@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
-from link_smark_app.views import HomeView, UpdateB, BookmarkDetail, AddBookmark
+from link_smark_app.views import HomeView, UpdateB, BookmarkDetail, AddBookmark, BookmarkDetailView
 
 urlpatterns = [
     url(r'^$', HomeView.as_view(), name='home'),
@@ -25,5 +25,6 @@ urlpatterns = [
 
     url(r'^bookmark/', AddBookmark.as_view(), name='bookmark'),
     url(r'^bookmark/details/', BookmarkDetail.as_view(), name='bookmark_list'),
-    url(r'^bookmark/(?P<pk>\d+)/$', AddBookmark.as_view(), name='bookmark_view'),
+    url(r'^bookmark_view/(?P<pk>\d+)/$', BookmarkDetailView.as_view(), name='bookmark_view'),
+
 ]
