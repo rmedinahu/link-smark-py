@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block header_row %}
+    <div class="col-md-12"><h3>Lists</h3></div>
+{% endblock header_row %}
+
+{% block content_row %}
+<div class="col-md-4">
+    <p>
+        <strong>Home</strong>
+        <a href="{% url 'tagged_bookmark' %}" class="btn btn-sm btn-outline-primary"><i class="fa fa-plus"></i></a>
+        <ul class="list-unstyled">
+        <li>title: {{ object.title }}</li>
+        <li>url: {{ object.web_url }}</li>
+        <li>date: {{ object.date }}</li>
+        <li>bookmark:{{ object.bookmark}}</li>
+        <li>tag:{{ object.tag}}</li>
+        </ul>
+    </p>
+</div>
+{% endblock content_row %}
