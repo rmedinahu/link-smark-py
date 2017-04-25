@@ -1,6 +1,7 @@
 <!-- bookmark_list.html -->
 
 
+
 {% extends "base.html" %}
 
 {% block header_row %} 
@@ -10,17 +11,20 @@
 {% block content_row %} 
 <div class="col-md-12">
 	<p>
-		<strong>Item</strong>
 
+	    <strong>Bookmark</strong>
   
 	    <ul class="list-unstyled">
-	    {% for bookmark in object_list %}
+	    {% for object in object_list %}
 	        <li>
-	        {{ bookmark.name }}
-	        <a href="{% url 'bookmark_view' bookmark.pk %}" class="btn btn-link"><i class="fa fa-eye"></i></a>
+	        {{ object.title }}
+	        <a href="{% url 'bookmark_detail' object.pk %}" class="btn btn-link"><i class="fa fa-eye"></i></a>
+	        <a href="{% url 'update' object.pk %}" class="btn btn-link"><i class="fa fa-edit"></i></a>
 	        </li>
 	    {% endfor %}
 	    </ul>
 	</p>
 </div>
+
 {% endblock content_row %}  
+
