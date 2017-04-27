@@ -11,12 +11,11 @@ Class-based views
     2. Add a URL to urlpatterns:  url(r'^$', Home.as_view(), name='home')
 Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
-    2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
 from django.contrib import admin
 
-from link_smark_app.views import HomeView, UpdateB, BookmarkDetail, AddBookmark,TaggedBookmark, AddTag, BookmarkList, ViewTag
+from link_smark_app.views import HomeView, UpdateB, BookmarkDetail, AddBookmark,TaggedBookmarkView, AddTag, BookmarkList, ViewTag, ViewTaggedBookmarks
 
 urlpatterns = [
     url(r'^$', HomeView.as_view(), name='home'),
@@ -24,12 +23,16 @@ urlpatterns = [
     url(r'^bookmark/add/', AddBookmark.as_view(), name='bookmark'),
     url(r'^bookmark/(?P<pk>\d+)/$', AddBookmark.as_view(), name='bookmark_view'),
     url(r'^bookmark/detail/(?P<pk>\d+)/$', BookmarkDetail.as_view(), name='bookmark_detail'),
-    url(r'^bookmark/details/', BookmarkDetail.as_view(), name='bookmark_list'),  
+    url(r'^bookmark/details/', BookmarkDetail.as_view(), name='bookmark_list'),
     url(r'^bookmark/list/', BookmarkList.as_view(), name='list'),
     url(r'^update/(?P<pk>\d+)/$', UpdateB.as_view(), name='update'),
     url(r'^update/', UpdateB.as_view(), name='update'),
     url(r'^bookmark/tag/', AddTag.as_view(), name='tag'),
     url(r'^tag/list/', ViewTag.as_view(), name='list_tag'),
-    #url(r'^/bookmark/tagged/$', TaggedBookmark.as_view(), name='_bookmark_view')
+#    url(r'^bookmark/(?P<bookmark_pk>\d+)/add/$', TaggedBookmarkView.as_view(), name='tagged_bookmark')
+    url(r'^bookmark/tagged', TaggedBookmarkView.as_view(), name='tagged_bookmark'),
+    url(r'^tagged_bookmark/list/', ViewTaggedBookmarks.as_view(), name='list_tagged_bookmarks'),
+    #url(r'^tagged_bookmark/list/(?P<pk>\d+)/$', ViewTaggedBookmarks.as_view(), name='list_tagged_bookmarks'),
+
 
 ]

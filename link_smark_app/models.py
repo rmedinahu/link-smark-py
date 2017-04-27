@@ -47,7 +47,10 @@ class TaggedBookmark(models.Model):
 	tag = models.ForeignKey(Tag, related_name="tagged_bkmarks")
 
 	def __str__(self):
-	    return self.tagged_bookmark.name
+	    return self.bookmark.title
+
+        def get_absolute_url(self):
+            return reverse('list_tagged_bookmarks', kwargs= False)
 
 class BookmarkComments(models.Model):
 	bookmark = models.ForeignKey(Bookmarks)
