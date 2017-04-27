@@ -50,3 +50,24 @@ class BookmarkDetailView(DetailView):
 class ViewTag(ListView):
     model = Tag
     template_name = 'tag_list.html'
+
+class ListTag(ListView):
+    model = Tag 
+    template_name = 'bookmark_tag.html'
+    fields = ['text', 'description']
+
+class UpdateTag(ListView):
+    model = Tag
+    template_name = 'update_tag.html'
+    fields = ['text', 'description']
+
+class TagUpdate(UpdateView):
+    model = Tag
+    template_name = 'tag_update.html'
+    fields = ['text', 'description']
+
+class DetailTagView(DetailView):
+    model = Tag
+    template_name = 'detail_tag.html'
+    fields = ['text', 'description']
+

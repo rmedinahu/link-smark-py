@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block header_row %}
+    <div class="col-md-12"><h3>Update and View the Details of your tag.</h3></div>
+{% endblock header_row %}
+
+{% block content_row %}
+<div class="col-md-12">
+<div class="col-md-12">
+
+
+<ul class="list-unstyled"> 
+	 {% for object in object_list %}
+	   <li>
+	      <b>Text:</b> {{ object.text }}
+          <!-- <b>Description:</b> {{object.description}} -->
+
+          <a href="{% url 'tag_update' object.pk %}" class="btn btn-link"><i class="fa fa-edit"></i></a>
+          <a href="{% url 'detail_tag' object.pk %}" class="btn btn-link"><i class="fa fa-eye"></i></a>
+
+	 {% endfor %}
+	 </ul>
+
+</div>
+</div>
+{% endblock content_row %}

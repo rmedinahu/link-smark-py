@@ -42,6 +42,7 @@ class Tag(models.Model):
 	def get_absolute_url(self):
 		return reverse('list_tag', kwargs=False)
 
+
 class TaggedBookmark(models.Model):
 	bookmark = models.ForeignKey(Bookmarks, related_name="tags")
 	tag = models.ForeignKey(Tag, related_name="tagged_bkmarks")

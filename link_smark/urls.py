@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
-from link_smark_app.views import HomeView, UpdateB, BookmarkDetail, AddBookmark,TaggedBookmark, AddTag, BookmarkList, ViewTag
+from link_smark_app.views import HomeView, UpdateB, BookmarkDetail, AddBookmark,TaggedBookmark, AddTag, BookmarkList, ViewTag, ListTag, UpdateTag, TagUpdate, DetailTagView
 
 urlpatterns = [
     url(r'^$', HomeView.as_view(), name='home'),
@@ -30,6 +30,10 @@ urlpatterns = [
     url(r'^update/', UpdateB.as_view(), name='update'),
     url(r'^bookmark/tag/', AddTag.as_view(), name='tag'),
     url(r'^tag/list/', ViewTag.as_view(), name='list_tag'),
+    url(r'^tag/', ListTag.as_view(), name='bookmark_tag'),
+    url(r'^update_tag/', UpdateTag.as_view(), name='update_tag'),
+    url(r'^tag_update/(?P<pk>\d+)/$', TagUpdate.as_view(), name='tag_update'),
+    url(r'^detail_tag/(?P<pk>\d+)/$', DetailTagView.as_view(), name='detail_tag'),
     #url(r'^/bookmark/tagged/$', TaggedBookmark.as_view(), name='_bookmark_view')
 
 ]
