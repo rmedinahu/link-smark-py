@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block header_row %}
+    <div class="col-md-12"></div>
+{% endblock header_row %}
+
+{% block content_row %}
+<div class="col-md-12">
+	<p>
+	    <center><strong>News Feed (ordered by date)</strong></center>
+	    </br>
+
+	    <ul class="list-unstyled">
+	    {% for object in object_list reversed %}
+	        <li>
+	        {{ object.creator }}
+	        :
+	        &nbsp;
+	        {{ object.msg }}
+	        &nbsp;
+	        &nbsp;
+	        {{ object.date }}
+	        </li>
+	    {% endfor %}
+	    </ul>
+	</p>
+</div>
+
+{% endblock content_row %} 
