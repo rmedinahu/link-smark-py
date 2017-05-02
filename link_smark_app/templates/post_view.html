@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block header_row %} 
+<h3>{{object.title}}</h3>
+{% endblock header_row %}
+
+{% block content_row %} 
+<div class="col-md-4">
+	<ul class="list-unstyled">
+	<li>User: {{ object.creator }}</li>
+	<li>Post: {{ object.msg }}</li>
+	<li>Date: {{ object.date }}</li>
+	</ul>
+</div>
+{% endblock content_row %} 

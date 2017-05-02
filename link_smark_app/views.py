@@ -5,7 +5,7 @@ from django.shortcuts import render
 
 from django.views.generic import TemplateView, DetailView, ListView, UpdateView, CreateView
 
-from .models import Bookmarks, Tag, TaggedBookmark, Posts, BookmarkComments
+from .models import Bookmarks, Tag, TaggedBookmark, Posts
 class HomeView(TemplateView):
     template_name='home.html'
 
@@ -50,3 +50,44 @@ class BookmarkDetailView(DetailView):
 class ViewTag(ListView):
     model = Tag
     template_name = 'tag_list.html'
+
+class ListTag(ListView):
+    model = Tag 
+    template_name = 'bookmark_tag.html'
+    fields = ['text', 'description']
+
+class UpdateTag(ListView):
+    model = Tag
+    template_name = 'update_tag.html'
+    fields = ['text', 'description']
+
+class TagUpdate(UpdateView):
+    model = Tag
+    template_name = 'tag_update.html'
+    fields = ['text', 'description']
+
+class DetailTagView(DetailView):
+    model = Tag
+    template_name = 'detail_tag.html'
+    fields = ['text', 'description']
+
+class BookmarkPostComment(CreateView):
+    model = Posts
+    template_name = 'post.html'
+    fields = ['creator', 'msg']
+
+class PostView(DetailView):
+    model = Posts
+    template_name = 'post_view.html'
+
+class NewsFeed(ListView):
+    model = Posts
+    template_name = 'news_feed.html'
+#
+class BookmarkPost(CreateView):
+    model = Posts
+    template_name = 'bookmark_post.html'
+    fields = ['bookmark', 'msg', 'creator']
+
+    def get_success_url(self):
+        return reverse('bookmark_post')
