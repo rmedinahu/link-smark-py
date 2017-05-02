@@ -35,6 +35,19 @@ class ViewTaggedBookmarks(ListView):
     model = TaggedBookmark
     template_name = 'view_tagged_bookmark.html'
 
+class GetBookmarkFromTag(TemplateView):
+    template_name = 'get_bookmark_from_tag.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(GetBookmarkFromTag, self).get_context_data(**kwargs)
+        context['tags'] = Tag.objects.all()
+        if self.request.GET:
+            tag_filter = self.request.GET.get('filter')
+            tagged = TaggedBookmark.objects.filter(tag__text=tag_filter)
+            context['bookmarks'] = tagged
+        return context
+
+
 class AddBookmark(CreateView):
     """Add a bookmark"""
     model = Bookmarks

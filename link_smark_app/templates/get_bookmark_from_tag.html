@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block header_row %}
+    <div class="col-md-12"><h3>View Bookmark From Selected Tag{{ bookmark }}</h3><h4>{{ kwargs }}</h4></div>
+{% endblock header_row %}
+
+{% block content_row %}
+<div class="col-md-12">
+	<h1> Tags </h1>
+  {%for i in tags %}
+      <a href="{% url 'get_bkmark_from_tg'%}?filter={{i.text}}">{{i}}</a>
+      {%endfor%}
+  <h1> Bookmarks </h1>
+  {%for i in bookmarks %}
+      <span>{{i.bookmark}}</span>
+      {%endfor%}
+</div>
+{% endblock content_row %}

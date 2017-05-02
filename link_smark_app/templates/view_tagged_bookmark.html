@@ -12,10 +12,9 @@
 	    <ul class="list-unstyled">
 	    {% for object in object_list %}
 	        <li>
-	        {{ object.text }}
-          {{object.description}}
+	        {{object.bookmark}}
           {{object.tag}}
-          {{object.bookmark}}
+        
 	    {% endfor %}
 	    </ul>
 	</p>

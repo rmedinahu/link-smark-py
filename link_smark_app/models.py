@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.urls import reverse
-# Use django's built in User class.
 from django.contrib.auth.models import User
 
 
@@ -49,8 +48,8 @@ class TaggedBookmark(models.Model):
 	def __str__(self):
 	    return self.bookmark.title
 
-        def get_absolute_url(self):
-            return reverse('list_tagged_bookmarks', kwargs= False)
+        #def get_absolute_url(self):
+        #    return reverse('list_tagged_bookmarks', kwargs= False)
 
 class BookmarkComments(models.Model):
 	bookmark = models.ForeignKey(Bookmarks)

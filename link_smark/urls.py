@@ -15,7 +15,7 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
-from link_smark_app.views import HomeView, UpdateB, BookmarkDetail, AddBookmark,TaggedBookmarkView, AddTag, BookmarkList, ViewTag, ViewTaggedBookmarks
+from link_smark_app.views import HomeView, UpdateB, BookmarkDetail, AddBookmark,TaggedBookmarkView, AddTag, BookmarkList, ViewTag, ViewTaggedBookmarks, GetBookmarkFromTag
 
 urlpatterns = [
     url(r'^$', HomeView.as_view(), name='home'),
@@ -29,10 +29,10 @@ urlpatterns = [
     url(r'^update/', UpdateB.as_view(), name='update'),
     url(r'^bookmark/tag/', AddTag.as_view(), name='tag'),
     url(r'^tag/list/', ViewTag.as_view(), name='list_tag'),
-#    url(r'^bookmark/(?P<bookmark_pk>\d+)/add/$', TaggedBookmarkView.as_view(), name='tagged_bookmark')
     url(r'^bookmark/tagged', TaggedBookmarkView.as_view(), name='tagged_bookmark'),
     url(r'^tagged_bookmark/list/', ViewTaggedBookmarks.as_view(), name='list_tagged_bookmarks'),
-    #url(r'^tagged_bookmark/list/(?P<pk>\d+)/$', ViewTaggedBookmarks.as_view(), name='list_tagged_bookmarks'),
+    url(r'^bookmark/tgBook/', GetBookmarkFromTag.as_view(), name='get_bkmark_from_tg'),
+    #url(r'^bookmark/tgBook/?filter=', GetBookmarkFromTag.as_view(), name='get_bkmark_from_tg'),
 
 
 ]
