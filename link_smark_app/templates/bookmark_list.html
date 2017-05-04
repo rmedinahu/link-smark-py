@@ -19,6 +19,7 @@
 	        {{ object.title }}
 	        <a href="{% url 'bookmark_detail' object.pk %}" class="btn btn-link"><i class="fa fa-eye"></i></a>
 	        <a href="{% url 'update' object.pk %}" class="btn btn-link"><i class="fa fa-edit"></i></a>
+
 	        </li>
 	    {% endfor %}
 	    </ul>

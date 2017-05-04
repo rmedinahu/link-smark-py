@@ -84,10 +84,10 @@ class NewsFeed(ListView):
     model = Posts
     template_name = 'news_feed.html'
 #
-class BookmarkPost(CreateView):
+class BookmarkPost(UpdateView):
     model = Posts
     template_name = 'bookmark_post.html'
-    fields = ['bookmark', 'msg', 'creator']
+    fields = ['bookmark']
 
-    def get_success_url(self):
-        return reverse('bookmark_post')
+    #def get_success_url(self):
+        #return reverse('bookmark_post')

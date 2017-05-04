@@ -13,17 +13,28 @@
 	    <ul class="list-unstyled">
 	    {% for object in object_list reversed %}
 	        <li>
-	        {{ object.creator }}
+	        <p>{{ object.creator }}
 	        :
 	        &nbsp;
-	        {{ object.msg }}
-	        &nbsp;
+	        "{{ object.msg }}"
 	        &nbsp;
 	        {{ object.date }}
+	        &nbsp;
+	        &nbsp;
+	        &nbsp;
+	        &nbsp;
+	         Associated Bookmark:
+	         {{object.bookmark}}
+	         <a href="{% url 'bookmark_post' object.pk %}" class="btn btn-link"><i class="fa fa-edit"></i></a></p>
+	         
 	        </li>
 	    {% endfor %}
 	    </ul>
 	</p>
 </div>
+
+<!-- {% for object in object_list reversed %}
+{{object.message}}
+{% endfor %} -->
 
 {% endblock content_row %} 
