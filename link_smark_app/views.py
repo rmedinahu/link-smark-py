@@ -1,11 +1,19 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django import forms
+
 from django.shortcuts import render
 
-from django.views.generic import TemplateView, DetailView, ListView, UpdateView, CreateView
+from django.views.generic import TemplateView, DetailView, ListView, UpdateView, CreateView, FormView
 
 from .models import Bookmarks, Tag, TaggedBookmark, Posts
+
+from .htmlparser import MyHTMLParser
+
+class UploadFileForm(forms.Form):
+    file = forms.FileField()
+
 class HomeView(TemplateView):
     template_name='home.html'
 
@@ -91,3 +99,20 @@ class BookmarkPost(CreateView):
 
     def get_success_url(self):
         return reverse('bookmark_post')
+class importHTMLasbookmarks (FormView):
+    template_name = 'bookmark_import.html'
+    form_class = UploadFileForm
+    success_url = "/bookmark/list/"
+    def form_valid(self, form):
+        file = self.request.FILES['file']
+        m = MyHTMLParser()
+        line = str(file.read())
+        print(line)
+        m.feed(line)
+        name = m.namez()
+        attr = m.attrits()
+        for i in range(len(name)):
+            newbk = Bookmarks(title = name[i], web_url = attr[i])
+            newbk.save()
+        return super(importHTMLasbookmarks, self).form_valid(form)
+
