@@ -107,7 +107,6 @@ class importHTMLasbookmarks (FormView):
         file = self.request.FILES['file']
         m = MyHTMLParser()
         line = str(file.read())
-        print(line)
         m.feed(line)
         name = m.namez()
         attr = m.attrits()
