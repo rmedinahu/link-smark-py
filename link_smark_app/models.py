@@ -5,18 +5,6 @@ from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
 
-
-class Posts(models.Model):
-	"""post class that handles user messages about bookmarks.
-	"""
-	creator = models.ForeignKey(User)
-	msg = models.TextField(max_length=255)
-	date = models.DateTimeField(auto_now=True)
-
-	def __str__(self):
-		return self.msg
-
-
 class Bookmarks(models.Model):
 	"""bookmark class that contains all bookmarks
 	"""
@@ -35,14 +23,15 @@ class Tag(models.Model):
 	text = models.CharField(max_length=255, unique=True)
 	description = models.CharField(max_length=255)
 
-        def __str__(self):
-            return self.text
+	def __str__(self):
+		return self.text
 
 	def get_absolute_url(self):
 		return reverse('list_tag', kwargs=False)
 
+
 class TaggedBookmark(models.Model):
-	bookmark = models.ForeignKey(Bookmarks, related_name="tags")
+	bookmark = models.ForeignKey(Bookmarks)
 	tag = models.ForeignKey(Tag, related_name="tagged_bkmarks")
 
 	def __str__(self):
@@ -51,6 +40,19 @@ class TaggedBookmark(models.Model):
         #def get_absolute_url(self):
         #    return reverse('list_tagged_bookmarks', kwargs= False)
 
-class BookmarkComments(models.Model):
-	bookmark = models.ForeignKey(Bookmarks)
-	post = models.ForeignKey(Posts)
+class Posts(models.Model):
+	"""post class that handles user messages about bookmarks.
+	"""
+	bookmark = models.ForeignKey(Bookmarks, default=0)
+	creator = models.ForeignKey(User)
+	msg = models.TextField(max_length=255)
+	date = models.DateTimeField(auto_now=True)
+
+	def get_absolute_url(self):
+		return reverse('post_view', kwargs={'pk': self.pk})
+
+	def __str__(self):
+		return self.msg
+
+
+
