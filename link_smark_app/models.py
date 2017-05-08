@@ -24,8 +24,8 @@ class Tag(models.Model):
 	text = models.CharField(max_length=255, unique=True)
 	description = models.CharField(max_length=255)
 
-        def __str__(self):
-            return self.text
+	def __str__(self):
+		return self.text
 
 	def get_absolute_url(self):
 		return reverse('list_tag', kwargs=False)
