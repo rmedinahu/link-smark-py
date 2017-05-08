@@ -37,6 +37,9 @@ urlpatterns = [
     url(r'^post/$', BookmarkPostComment.as_view(), name='post'),
     url(r'^post_view/(?P<pk>\d+)/$', PostView.as_view(), name='post_view'),
     url(r'^news_feed/', NewsFeed.as_view(), name='news_feed'),
+    url(r'^bookmark_post/(?P<pk>\d+)/$', BookmarkPost.as_view(), name='bookmark_post'),
+    #url(r'^/bookmark/tagged/$', TaggedBookmark.as_view(), name='_bookmark_view')
     url(r'^bookmark/import/', importHTMLasbookmarks.as_view(), name='bookmark_import'),
+
 
 ]
